@@ -78,6 +78,5 @@ function printReciept(template$, data$) {
      setTimeout(() => { document.body.removeChild(printIframe) }, 100)
 }
 
-window.printReciept = printReciept;
 
 module.exports = printReciept;
