@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jidan745le/reciept-printer/issues"
   },
-  "homepage": "https://github.com/jidan745le/reciept-printer#readme"
+  "homepage": "https://github.com/jidan745le/reciept-printer#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
