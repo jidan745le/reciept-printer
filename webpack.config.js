@@ -2,9 +2,13 @@ var config = {
     entry: __dirname + '/src/index.js',
     devtool: 'source-map',
     mode:"development",
+   
     output: {
         path: __dirname + '/dist',   
-        libraryTarget: 'umd',       
+        libraryTarget: 'umd',    
+        environment: {
+            arrowFunction: false
+        },   
     },    
     module: {
         rules: [
