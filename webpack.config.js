@@ -5,6 +5,17 @@ var config = {
     output: {
         path: __dirname + '/dist',   
         libraryTarget: 'umd',       
+    },    
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
+             },
+        ]
     }
 }
 
