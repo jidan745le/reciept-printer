@@ -1,7 +1,9 @@
 const styleContent = require("./utils/template-style");
 const combineTemplate = require("./utils/index");
 const compile = require("./utils/compiler");
-const { chunk, template } = require("lodash");
+const template  = require("lodash/template");
+const chunk  = require("lodash/chunk");
+
 function adjustSequence(entries, series) {
     //组织顺序
     const mapping = new Map();

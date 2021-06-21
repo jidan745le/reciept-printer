@@ -1,6 +1,6 @@
 {
   "name": "reciept-printer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "reciept-printer",
   "main": "src/index.js",
   "scripts": {
@@ -18,5 +18,9 @@
   "homepage": "https://github.com/jidan745le/reciept-printer#readme",
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2"
   }
 }
