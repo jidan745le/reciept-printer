@@ -1,6 +1,6 @@
 {
   "name": "reciept-printer",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "reciept-printer",
   "main": "dist/main.js",
   "scripts": {
