@@ -29,7 +29,7 @@ const itemsTemplate = name => ` <div class="reciept-wrapper">
         <div style="word-break:break-all"><%=item[0]%></div>     
         <div class="table-outer">        
         <% item.forEach(function(element,i){if(!!i){%>
-            <%=element%>
+            <%if(i===1){%><%=element%><%}else{%>&nbsp;<%=element%><%}%>
         <%} }) %>        
        </div>       
        <div class="low-height"><br/></div>
