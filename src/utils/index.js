@@ -28,8 +28,8 @@ const itemsTemplate = name => ` <div class="reciept-wrapper">
     <% ${name}.items.forEach(function(item){ %>   
         <div style="word-break:break-all"><%=item[0]%></div>     
         <div class="table-outer">        
-        <% item.forEach(function(element,i){if(!!i){%>
-            <%if(i===1){%><%=element%><%}else{%>&nbsp;<%=element%><%}%>
+        <% item.forEach(function(element,i,arr){if(!!i){%>
+            <%if(i===1){%><%=element%><%}else{if(arr[1].length <== 13){%>&nbsp;<%=element%><%else{%><%=element%><%}}%>
         <%} }) %>        
        </div>       
        <div class="low-height"><br/></div>
