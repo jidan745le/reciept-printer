@@ -29,7 +29,7 @@ const itemsTemplate = name => ` <div class="reciept-wrapper">
         <div style="word-break:break-all"><%=item[0]%></div>     
         <div class="table-outer">        
         <% item.forEach(function(element,i,arr){if(!!i){%>
-            <%if(i===1){%><%=element%><%}else{if(arr[1].length <== 13){%>&nbsp;<%=element%><%else{%><%=element%><%}}%>
+            <%if(i===1){%><%=element%><%}else{if(arr[1].length <== 13){%>&nbsp;<%=element%><%}else{%><%=element%><%}}%>
         <%} }) %>        
        </div>       
        <div class="low-height"><br/></div>
