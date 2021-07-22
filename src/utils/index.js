@@ -106,7 +106,17 @@ const combineTemplate = arr => {
             return name =>`<div><%=${name}%></div>`
         }
 
+        if(/^img$/.test(type)){
+            return src =>`<img src="<%=${src}%>" />`
+        }
 
+        if(/^imgright$/.test(type)){
+            return src =>`<div style="text-align:right"><img style="width:25mm" src="<%=${src}%>" /><div style="text-align:right;margin-right:8mm;font-size:2mm;position:relative;top:-2mm">订单号</div></div>`
+        }
+
+        if(/^orderidqrcode$/){
+            return src =>`<div style="text-align:right"><img style="width:25mm" src="<%=${src}%>" /><div style="text-align:right;margin-right:8mm;transform:scale(0.8);position:relative;top:-2mm">订单号</div></div>`
+        }
     }
 
     return arr.map(({type,name}) => {
@@ -114,4 +124,4 @@ const combineTemplate = arr => {
     }).join("")
 }
 
-module.exports = combineTemplate;
+export default combineTemplate;

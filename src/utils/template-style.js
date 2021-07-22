@@ -1,4 +1,4 @@
-const style = `@media print {
+const style = isLodop => `@media print {
     @page {
         margin: 0mm;
     }
@@ -40,8 +40,9 @@ html {
 
 body {
     margin:0mm;
-    padding: 9mm;  
+    padding: 0mm ${isLodop ? 0:9}mm;  
     font-family:SimHei;  
+    font-weight:bold;
 }
 
 .inner {
@@ -71,4 +72,4 @@ body {
     font-size: 3mm;
 }
 `
-module.exports = style;
+export default style;

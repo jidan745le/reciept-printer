@@ -33,9 +33,9 @@ const tokenizer = (str) => {
             continue;
 
         }
-        if (/\w/.test(str[i])) {
+        if (/[\w,\/+=:;]/.test(str[i])) {
             let tag = "";
-            while (/\w/.test(str[i])) {
+            while (/[\w,\/+=:;]/.test(str[i])) {
                 tag += str[i]
                 i++;
             }
@@ -50,7 +50,7 @@ const tokenizer = (str) => {
             continue;
         }
 
-        throw new TypeError('I dont know what this character is: ' + str[i]);
+        throw new TypeError('I dont know what this character is: ' + str[i+1]);
     }
     return tokens;
 }
@@ -100,7 +100,7 @@ const parse = arr => {
 
 }
 
-module.exports = str => parse(tokenizer(str));
+export default str => parse(tokenizer(str));
 
 
 

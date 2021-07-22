@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document</title><script defer="defer" src="main.js"></script></head><body><button>点击</button><script>const datas = {
+            "title": "永辉超市（福州市屏西店）团购订单",
+            "basicDetail": {
+                "订单编号": "1207340100085050",
+                "客户类型": "固定客户",
+                "客户编号": "0000103882",
+                "客户名称": "8596破门",
+                "客户简称": "8596破门",
+                "备注": "",
+                "发货日期": "2021-06-18"
+            },
+            "items": {
+                "headers": [
+                    "商品",
+                    "单价",
+                    "数量",
+                    "金额"
+                ],
+                "sequence": [
+                    "goodsname",
+                    "goodsbarcode",
+                    "customsaleprice",
+                    "qty",
+                    "totalsaleprice"
+                ],
+                "items": [
+                    {
+                        "itemid": 1207340100085050000,
+                        "goodsbarcode": "2100000841424",
+                        "unit": "袋",
+                        "totalsaleprice": 20,
+                        "discountamount": 0,
+                        "goodsid": "B-812088",
+                        "qty": 1,
+                        "goodsname": "鑫云东五香味泡鸭翅",
+                        "customsaleprice": 20,
+                        "specprop": "40g",
+                        "payamount": 20
+                    }
+                ]
+            },
+            "amountInfo": {
+                "订单总额": 20,
+                "件数": 1
+            },
+            "orderCreateDetail": {
+                "制单人": "admin",
+                "制单日期": "2021-06-18 16:25:26",
+                "审核人": "admin",
+                "审核日期": "2021-06-18 16:25:26"
+            },
+            "printInfo": {
+                "打印次数": 1
+            },
+            "text": "团购订单小票",
+            "orderid":"1234567"
+        };
+
+        const tpl = `
+        <orderidqrcode>orderid</orderidqrcode>
+        <title>title</title>
+        <br2/>
+        <layout>basicDetail</layout>
+        <br2 />
+        <line2 />
+        <br2 />
+        <items>items</items>
+        <br2 />
+        <line2/>
+        <br2 />
+        <layout2>amountInfo</layout2>
+        <br2 />
+        <layout>orderCreateDetail</layout>
+        <br2 />
+        <line2 />
+        <br2 />
+        <layout>printInfo</layout>
+        <text>text</text>     
+        `
+
+        document.querySelector("button").addEventListener("click",()=>{
+            printReciept(tpl, datas);
+        })</script></body></html>
