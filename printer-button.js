@@ -23,21 +23,13 @@ const PrinterButton = () => {
     onClick: handleMenuClick
   }, /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
     key: "1"
-  }, /*#__PURE__*/_react.default.createElement(_antd.Icon, {
-    type: "printer"
-  }), "\u6253\u5370\u673A1"), /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
+  }, "\u6253\u5370\u673A1"), /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
     key: "2"
-  }, /*#__PURE__*/_react.default.createElement(_antd.Icon, {
-    type: "printer"
-  }), "\u6253\u5370\u673A2"), /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
+  }, "\u6253\u5370\u673A2"), /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
     key: "3"
-  }, /*#__PURE__*/_react.default.createElement(_antd.Icon, {
-    type: "printer"
-  }), "\u6253\u5370\u673A3"));
+  }, "\u6253\u5370\u673A3"));
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    id: "components-dropdown-demo-dropdown-button"
-  }, /*#__PURE__*/_react.default.createElement(_antd.Dropdown.Button, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_antd.Dropdown.Button, {
     onClick: () => _antd.message.success("直接打印"),
     overlay: menu(selectedKeys)
   }, "\u6253\u5370"));
