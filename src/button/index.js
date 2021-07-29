@@ -1,7 +1,14 @@
 import { Menu, Dropdown, message } from "antd";
 import React from 'react'
+import getLodop from "../utils/lodop";
+
 const PrinterButton = () => {
     const [selectedKeys, setSelectedKeys] = React.useState([]);
+    const lodop = React.useRef({});
+    React.useEffect(()=>{
+        lodop.current = getLodop();        
+    },[])
+
 
     function handleMenuClick(e) {
         setSelectedKeys([e.key]);
@@ -24,6 +31,7 @@ const PrinterButton = () => {
     return (
         <div>
             <Dropdown.Button
+                placement="topCenter"
                 onClick={() => message.success("直接打印")}
                 overlay={menu(selectedKeys)}>
                 打印
