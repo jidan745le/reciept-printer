@@ -17,16 +17,18 @@
   },
   "homepage": "https://github.com/jidan745le/reciept-printer#readme",
   "dependencies": {
+    "@babel/preset-react": "^7.14.5",
     "@babel/runtime": "^7.14.8",
     "antd": "^3.6.1",
     "core-js": "^3.15.2",
     "lodash": "^4.17.21",
     "qrcode": "^1.4.4",
-    "regenerator-runtime": "^0.13.7",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.5",
