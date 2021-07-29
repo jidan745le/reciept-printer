@@ -16,10 +16,20 @@ var _lodop = _interopRequireDefault(require("../utils/lodop"));
 const PrinterButton = () => {
   const [selectedKeys, setSelectedKeys] = _react.default.useState([]);
 
+  const [printerList, setList] = _react.default.useState([]);
+
   const lodop = _react.default.useRef({});
 
   _react.default.useEffect(() => {
     lodop.current = (0, _lodop.default)();
+    const count = lodop.current.GET_PRINTER_COUNT();
+    const printerList = new Array(count).fill(null).map((_, index) => {
+      return {
+        name: lodop.GET_PRINTER_NAME(index),
+        key: lodop.GET_PRINTER_NAME(index + ":DriverName")
+      };
+    });
+    setList(printerList);
   }, []);
 
   function handleMenuClick(e) {
@@ -29,13 +39,14 @@ const PrinterButton = () => {
   const menu = selectedKeys => /*#__PURE__*/_react.default.createElement(_antd.Menu, {
     selectedKeys: selectedKeys,
     onClick: handleMenuClick
-  }, /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
-    key: "1"
-  }, "\u6253\u5370\u673A1"), /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
-    key: "2"
-  }, "\u6253\u5370\u673A2"), /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
-    key: "3"
-  }, "\u6253\u5370\u673A3"));
+  }, printerList.map(({
+    name,
+    key
+  }) => {
+    return /*#__PURE__*/_react.default.createElement(_antd.Menu.Item, {
+      key: key
+    }, name);
+  }));
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_antd.Dropdown.Button, {
     placement: "topCenter",

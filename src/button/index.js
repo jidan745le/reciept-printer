@@ -4,9 +4,16 @@ import getLodop from "../utils/lodop";
 
 const PrinterButton = () => {
     const [selectedKeys, setSelectedKeys] = React.useState([]);
+    const [printerList,setList] = React.useState([]);
+
     const lodop = React.useRef({});
     React.useEffect(()=>{
-        lodop.current = getLodop();        
+        lodop.current = getLodop();
+        const count = lodop.current.GET_PRINTER_COUNT();
+        const printerList = new Array(count).fill(null).map((_,index)=>{
+            return {name:lodop.GET_PRINTER_NAME(index),key:lodop.GET_PRINTER_NAME(index+":DriverName")}
+        });
+        setList(printerList);
     },[])
 
 
@@ -16,15 +23,13 @@ const PrinterButton = () => {
 
     const menu = (selectedKeys) => (
         <Menu selectedKeys={selectedKeys} onClick={handleMenuClick}>
-            <Menu.Item key="1">                
-                打印机1
-            </Menu.Item>
-            <Menu.Item key="2">                
-                打印机2
-            </Menu.Item>
-            <Menu.Item key="3">               
-                打印机3
-            </Menu.Item>
+            {
+                printerList.map(({name,key}) => {
+                   return <Menu.Item key={key}>                
+                        {name}
+                    </Menu.Item>
+                })
+            }      
         </Menu>
     );
 
