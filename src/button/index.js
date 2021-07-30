@@ -23,7 +23,7 @@ function getLodopAsync(retryLimit = 10,retryInterval = 150){
     })
 }
 
-const PrinterButton = () => {
+const PrinterButton = ({onPrint}) => {
     const [selectedKeys, setSelectedKeys] = React.useState([]);
     const [printerList,setList] = React.useState([]);
 
@@ -33,7 +33,7 @@ const PrinterButton = () => {
             lodop.current = res.data;
             const count = lodop.current.GET_PRINTER_COUNT();
             const printerList = new Array(count).fill(null).map((_,index)=>{
-                return {name:lodop.current.GET_PRINTER_NAME(index),key:lodop.current.GET_PRINTER_NAME(index+":DriverName")}
+                return {name:lodop.current.GET_PRINTER_NAME(index),key:index,driver:lodop.current.GET_PRINTER_NAME(index+":DriverName")}
             });
             setList(printerList);
         }).catch(e =>{
@@ -62,7 +62,9 @@ const PrinterButton = () => {
         <div>
             <Dropdown.Button
                 placement="topCenter"
-                onClick={() => message.success("直接打印")}
+                onClick={() => {
+                    onPrint && onPrint(selectedKeys[0])
+                }}
                 overlay={menu(selectedKeys)}>
                 打印
             </Dropdown.Button>

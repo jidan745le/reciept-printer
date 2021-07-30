@@ -46,7 +46,9 @@ function getLodopAsync(retryLimit = 10, retryInterval = 150) {
   });
 }
 
-const PrinterButton = () => {
+const PrinterButton = ({
+  onPrint
+}) => {
   const [selectedKeys, setSelectedKeys] = _react.default.useState([]);
 
   const [printerList, setList] = _react.default.useState([]);
@@ -60,7 +62,8 @@ const PrinterButton = () => {
       const printerList = new Array(count).fill(null).map((_, index) => {
         return {
           name: lodop.current.GET_PRINTER_NAME(index),
-          key: lodop.current.GET_PRINTER_NAME(index + ":DriverName")
+          key: index,
+          driver: lodop.current.GET_PRINTER_NAME(index + ":DriverName")
         };
       });
       setList(printerList);
@@ -87,7 +90,9 @@ const PrinterButton = () => {
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_antd.Dropdown.Button, {
     placement: "topCenter",
-    onClick: () => _antd.message.success("直接打印"),
+    onClick: () => {
+      onPrint && onPrint(selectedKeys[0]);
+    },
     overlay: menu(selectedKeys)
   }, "\u6253\u5370"));
 };

@@ -60,7 +60,7 @@ const processData = async (temp, data) => {
     return ret;
 }
 
-async function printReciept(template$, data$) {
+async function printReciept(template$, data$, printerIndex) {
     const temp$ = compile(template$);
     const temp = combineTemplate(temp$);
     const data = await processData(temp$, data$)
@@ -93,7 +93,15 @@ async function printReciept(template$, data$) {
         printIframe.contentWindow.document.body.innerHTML += template(temp)(data);
         LODOP.PRINT_INIT("");
         LODOP.ADD_PRINT_HTM(0, 0, "100%", "100%", printIframe.contentWindow.document.body.innerHTML);
-        LODOP.PREVIEW();
+
+        if(printerIndex !== undefined){
+            LODOP.SET_PRINTER_INDEX(printerIndex)
+            LODOP.PRINT()
+        }else{            
+            LODOP.PREVIEW();
+        }
+        
+      
     } else {
         printStyle.innerHTML = styleContent();
         console.log(styleContent());
