@@ -33,7 +33,7 @@ const PrinterButton = () => {
             lodop.current = res.data;
             const count = lodop.current.GET_PRINTER_COUNT();
             const printerList = new Array(count).fill(null).map((_,index)=>{
-                return {name:lodop.GET_PRINTER_NAME(index),key:lodop.GET_PRINTER_NAME(index+":DriverName")}
+                return {name:lodop.current.GET_PRINTER_NAME(index),key:lodop.current.GET_PRINTER_NAME(index+":DriverName")}
             });
             setList(printerList);
         }).catch(e =>{
