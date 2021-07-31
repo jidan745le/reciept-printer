@@ -28,13 +28,20 @@ const PrinterButton = ({onPrint}) => {
     const [printerList,setList] = React.useState([]);
 
     const lodop = React.useRef({});
-    React.useEffect(()=>{
+    React.useEffect(()=>{  
         getLodopAsync().then(res=> {
+            const printerDriver = localStorage.getItem("printerDriver");
+
             lodop.current = res.data;
             const count = lodop.current.GET_PRINTER_COUNT();
             const printerList = new Array(count).fill(null).map((_,index)=>{
                 return {name:lodop.current.GET_PRINTER_NAME(index),key:index,driver:lodop.current.GET_PRINTER_NAME(index+":DriverName")}
             });
+            if(printerDriver){
+                const index = printerList.findIndex(item => item.driver === printerDriver)
+                setSelectedKeys([index])
+            }
+            
             setList(printerList);
         }).catch(e =>{
             alert(e.message)
@@ -43,6 +50,7 @@ const PrinterButton = ({onPrint}) => {
 
 
     function handleMenuClick(e) {
+        localStorage.setItem("printerDriver",printerList[e.key].driver)
         setSelectedKeys([e.key]);
     }
 
