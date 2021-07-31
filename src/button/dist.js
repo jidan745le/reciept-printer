@@ -70,7 +70,7 @@ const PrinterButton = ({
 
       if (printerDriver) {
         const index = printerList.findIndex(item => item.driver === printerDriver);
-        setSelectedKeys([index]);
+        setSelectedKeys([`${index}`]);
       }
 
       setList(printerList);
