@@ -60,7 +60,9 @@ const processData = async (temp, data) => {
     return ret;
 }
 
-async function printReciept(template$, data$, printerIndex) {
+async function printReciept(template$, data$, lodopOptions) {
+    const { printerIndex = 0, printMode = "PREVIEW", liscences } = typeof lodopOptions === "number" ? { printerIndex: lodopOptions, printMode: "PRINT" } : (lodopOptions || {});
+
     const temp$ = compile(template$);
     const temp = combineTemplate(temp$);
     const data = await processData(temp$, data$)
@@ -86,22 +88,15 @@ async function printReciept(template$, data$, printerIndex) {
     //设置打印样式
     const printStyle = document.createElement("style");
     printStyle.type = 'text/css';
-    const LODOP = getLodop();
+    const LODOP = getLodop(undefined,undefined,liscences);
     if (LODOP) {
         printStyle.innerHTML = styleContent(true);
         printIframe.contentWindow.document.body.append(printStyle);
         printIframe.contentWindow.document.body.innerHTML += template(temp)(data);
         LODOP.PRINT_INIT("");
         LODOP.ADD_PRINT_HTM(0, 0, "100%", "100%", printIframe.contentWindow.document.body.innerHTML);
-
-        if(printerIndex !== undefined){
-            LODOP.SET_PRINTER_INDEX(printerIndex)
-            LODOP.PRINT()
-        }else{            
-            LODOP.PREVIEW();
-        }
-        
-      
+        LODOP.SET_PRINTER_INDEX(printerIndex);
+        LODOP[printMode]();          
     } else {
         printStyle.innerHTML = styleContent();
         console.log(styleContent());
